@@ -1,2 +1,2 @@
-.sqlite3
-apps.py
+*.sqlite3
+*apps.py
