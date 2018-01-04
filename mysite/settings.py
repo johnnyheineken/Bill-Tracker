@@ -25,7 +25,11 @@ SECRET_KEY = '1d!c=q9y04lhh!1*#7*33qr1-%$&s+6n25g58%!qzi=h@42_vc'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["python-2651.rostiapp.cz", '127.0.0.1']
+ALLOWED_HOSTS = [
+    'python-2651.rostiapp.cz',
+    '127.0.0.1', 
+    'bill-tracker-2654.rostiapp.cz',
+                 ]
 
 
 # Application definition
