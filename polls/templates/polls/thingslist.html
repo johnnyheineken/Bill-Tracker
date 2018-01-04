@@ -1,0 +1,12 @@
+{% if latest_things_list %}
+<ul>
+    {% for thing in latest_things_list %}
+    <li>
+        <a href="{% url 'polls:detail' thing.id %}">{{ thing.thing_description }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No polls are available.</p>
+{% endif %}
+<a href="{% url 'polls:new'%}">New thing?</a>

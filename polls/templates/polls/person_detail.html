@@ -1,0 +1,7 @@
+<h1>{{ person.name }}</h1>
+<br> bought: <br>
+{% for thing in thing_set %}
+<li>
+    <a href="{% url 'polls:detail' thing.id %}">{{ thing.thing_description }}</a> -- {{thing.price}}
+</li>
+{% endfor %}

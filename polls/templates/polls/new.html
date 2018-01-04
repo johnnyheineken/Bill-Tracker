@@ -1,0 +1,16 @@
+<form  action="{% url 'polls:vote' %}" method="post">
+    {% csrf_token %} 
+     Thing:
+    <input type="text" name="thing_name">
+    <br>
+    Price:
+    <input type="float" name="thing_price">
+    <br>
+     {% for human in person_list %}
+    <input type="radio" name="buyer" id="human{{ forloop.counter }}" value="{{ human.id }}">
+    <label for="human{{ forloop.counter }}">{{ human.name }}</label>
+    <br /> {% endfor %}
+    <br>
+    
+    <input type="submit" value="Submit" />
+</form>

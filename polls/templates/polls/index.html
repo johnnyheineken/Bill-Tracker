@@ -1,0 +1,18 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+
+{% if person_list %}
+<ul>
+    {% for person in person_list %}
+    <li>
+        <a href="{% url 'polls:person_detail' person.id %}">{{ person.name }}</a> -- {{person.spendings}}
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No polls are available.</p>
+{% endif %}
+
+<a href="{% url 'polls:new'%}">New thing?</a> <br>
+<a href="{% url 'polls:thingslist'%}">List of things</a>
