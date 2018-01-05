@@ -61,11 +61,11 @@
 
                 <a href="{% url 'polls:index' %}" class="w3-bar-item w3-button w3-theme-l1">Mortal Kombat</a>
                 {% if person_list %} {% for person in person_list %} {% if person.net_spendings > 0 %}
-                <a class="w3-bar-item w3-button w3-hide-small w3-lime w3-hover-white" href="{% url 'polls:person_detail' person.id %}">
+                <a class="w3-bar-item w3-button w3-hide-small w3-light-green w3-hover-white" href="{% url 'polls:person_detail' person.id %}">
                     {{ person.name }}: {{person.net_spendings}}
                 </a>
                 {% else %}
-                <a class="w3-bar-item w3-button w3-hide-small w3-amber w3-hover-white" href="{% url 'polls:person_detail' person.id %}">
+                <a class="w3-bar-item w3-button w3-hide-small w3-deep-orange w3-hover-white" href="{% url 'polls:person_detail' person.id %}">
                     {{ person.name }}: {{person.net_spendings}}
                 </a>
                 {% endif %} {% endfor %} {% else %}
