@@ -11,14 +11,14 @@
                 <h1 class="w3-text-teal">{{ thing.thing_description }}</h1>
                 <br> Bought: {{ thing.buyer }}
                 <br> Added: {{ thing.pub_date }}
-                <br> Price: {{ thing.price }}
+                <br> Price: {{ thing.price }} EUR
                 <br> {% if thing.flag == 1 %}
                 <p>
-                    <strong>Average price: {{ thing.found_price}}</strong>
+                    <strong>Average price: {{ thing.found_price}} EUR</strong>
                 </p>
                 {% endif %} {% if thing.flag == 2 %}
                 <p>
-                    <strong>Approximate average price: {{ thing.found_price}}</strong>
+                    <strong>Approximate average price: {{ thing.found_price}} EUR</strong>
                 </p>
                 {% endif %} {% if thing.flag == 3 %}
                 <p>

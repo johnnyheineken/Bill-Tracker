@@ -14,10 +14,19 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         """
-        Return the last five published questions 
-        (not including those set to be
-        published in the future).
+        Return actualised list of all persons.
         """
+        overall_spendings = 0
+        for person in Person.objects.all():
+            overall_spendings += person.spendings
+        for person in Person.objects.all():
+            spendings = 0
+            for thing in person.thing_set.all():
+                spendings += thing.price
+            person.spendings = spendings
+            person.net_spendings = spendings - \
+                (overall_spendings / Person.objects.count())
+            person.save()
         return Person.objects.all()
 
 
@@ -42,18 +51,6 @@ def detail(request, thing_id):
 
 def person_detail(request, person_id):
     person = get_object_or_404(Person, pk=person_id)
-    spendings = 0
-    for thing in person.thing_set.all():
-        spendings += thing.price
-    person.spendings = spendings
-    
-
-    overall_spendings = 0
-    for pers_spendings in Person.objects.all():
-        overall_spendings += pers_spendings.spendings
-    person.net_spendings = spendings - (overall_spendings / Person.objects.count())
-
-    person.save()
     return render(request,
                   'polls/person_detail.html',
                   {'person': person,
@@ -105,7 +102,7 @@ def vote(request):
         thing_description=good,
         pub_date=timezone.now(),
         price=price,
-        found_price=(found_price / CZK_to_EUR),
+        found_price=round((found_price / CZK_to_EUR), 1),
         buyer=p,
         flag=flag
         )
