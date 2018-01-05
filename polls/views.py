@@ -37,12 +37,16 @@ class ThingsListView(generic.ListView):
 
 def detail(request, thing_id):
     thing = get_object_or_404(Thing, pk=thing_id)
-    return render(request, 'polls/detail.html', {'thing': thing})
+    return render(request, 'polls/detail.html', {'thing': thing, 'person_list': Person.objects.all()})
 
 
 def person_detail(request, person_id):
     person = get_object_or_404(Person, pk=person_id)
-    return render(request, 'polls/person_detail.html', {'person': person, "thing_set": person.thing_set.all()})
+    return render(request,
+                  'polls/person_detail.html',
+                  {'person': person,
+                   "thing_set": person.thing_set.all(),
+                   'person_list': Person.objects.all()})
 
     
 
