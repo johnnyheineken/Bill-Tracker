@@ -71,7 +71,7 @@ def new(request):
                 ) 
 
 
-
+CZK_to_EUR = 25.5
 def vote(request):
     good = request.POST['thing_name']
     zboziURL = "https://www.zbozi.cz/api/v1/search?categoryLoadOffers=1&forceListProductsAndOffers=0&groupByCategory=0&groupByCategoryProductCount=4&loadTopProducts=false&page=1&query="
@@ -105,7 +105,7 @@ def vote(request):
         thing_description=good,
         pub_date=timezone.now(),
         price=price,
-        found_price=found_price,
+        found_price=(found_price / CZK_to_EUR),
         buyer=p,
         flag=flag
         )
