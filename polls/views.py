@@ -29,6 +29,11 @@ class IndexView(generic.ListView):
             person.save()
         return Person.objects.all()
 
+class MenuListView(generic.ListView):
+    template_name =  'polls/menu.html'
+    context_object_name = 'person_list'
+    def get_queryset(self):
+        return Person.objects.all()
 
 class ThingsListView(generic.ListView):
     template_name = 'polls/thingslist.html'

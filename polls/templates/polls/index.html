@@ -1,19 +1,54 @@
 {% include 'polls/menu.html' %}
+<style>
+    table {
+        position: relative;
+        border-collapse: collapse;
+        width: 50%;
+    }
+
+    th,
+    td {
+        text-align: right;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>
     <!-- -------------------------------------------------------------------------------- -->
     <!-- -------------------------------------------------------------------------------- -->
+    
+
     <div class="w3-main" style="margin-left:250px">
 
         <div class="w3-row w3-padding-64">
             <div class="w3-twothird w3-container">
                 <h1 class="w3-text-teal">Current spendings</h1>
                  {% if person_list %}
-                <ul>
-                    {% for person in person_list %}
-                    <li>
-                        <a href="{% url 'polls:person_detail' person.id %}">{{ person.name }}</a> -- Net: {{person.net_spendings}} -- Overall: {{person.spendings}}
-                    </li>
+                
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Net:</th>
+                        <th>Overall</th>
+                    </tr>
+                     {% for person in person_list %}
+                    <tr>
+                        <td><a href="{% url 'polls:person_detail' person.id %}">{{ person.name }}</a></td>
+                        <td>{{person.net_spendings}} EUR</td>
+                        <td>{{person.spendings}} EUR</td>
+                    </tr>
+                    
                     {% endfor %}
-                </ul>
+                    
+                </table>
+                
                 {% else %}
                 <p>No polls are available.</p>
                 {% endif %}
