@@ -24,8 +24,8 @@ class IndexView(generic.ListView):
             for thing in person.thing_set.all():
                 spendings += thing.price
             person.spendings = spendings
-            person.net_spendings = spendings - \
-                (overall_spendings / Person.objects.count())
+            person.net_spendings = round((spendings - \
+                (overall_spendings / Person.objects.count())), 2)
             person.save()
         return Person.objects.all()
 
