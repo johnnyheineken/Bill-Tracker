@@ -15,6 +15,7 @@ class Person(models.Model):
         max_length=6
         )
     spendings = models.FloatField('spendings', default = 0)
+    net_spendings = models.FloatField('net_spendings', default=0)
 
     def __str__(self):
         return self.name

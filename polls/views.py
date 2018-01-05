@@ -46,6 +46,13 @@ def person_detail(request, person_id):
     for thing in person.thing_set.all():
         spendings += thing.price
     person.spendings = spendings
+    
+
+    overall_spendings = 0
+    for pers_spendings in Person.objects.all():
+        overall_spendings += pers_spendings.spendings
+    person.net_spendings = spendings - (overall_spendings / Person.objects.count())
+
     person.save()
     return render(request,
                   'polls/person_detail.html',
