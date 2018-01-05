@@ -42,6 +42,11 @@ def detail(request, thing_id):
 
 def person_detail(request, person_id):
     person = get_object_or_404(Person, pk=person_id)
+    spendings = 0
+    for thing in person.thing_set.all():
+        spendings += thing.price
+    person.spendings = spendings
+    person.save()
     return render(request,
                   'polls/person_detail.html',
                   {'person': person,
